@@ -1,0 +1,10 @@
+# env
+.venv/
+.env
+# jupyter
+.ipynb_checkpoints/
+# data
+/data/*
+!/data/.gitkeep
+# OS / misc
+.DS_Store
