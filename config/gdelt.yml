@@ -1,0 +1,25 @@
+# Date window(s) for pulls
+startdate: "2000-01-01"        # YYYY-MM-DD
+enddate:   "2025-01-01"
+
+# Chunking to respect API/throughput (GDELT 2.0 is indexed in 15-min files;
+# here we just window by days for artlist queries)
+chunk_days: 7
+
+# Query template: narrow enough to pull humanitarian-related articles
+# Themes to be broadened later (e.g., EventRootCode=07 via BigQuery).
+query_template: '"Humanitarian Aid" OR humanitarian OR relief OR "aid convoy"'
+
+# Request settings
+maxrecords: 250
+mode: artlist        # returns article metadata + URLs
+format: CSV
+sleep_seconds_between_calls: 1.0
+retries: 3
+timeout_seconds: 30
+
+# Output file patterns
+events_dir: "data/raw/gdelt_events"
+artlist_dir: "data/raw/article_lists"
+interim_dir: "data/interim"
+processed_dir: "data/processed"
